@@ -10,6 +10,8 @@ namespace MovieTickets.Data
         Action,
         Comedy,
         Drama,
-        Documentary
+        Documentary,
+        Science_Ficiton
+
     }
 }

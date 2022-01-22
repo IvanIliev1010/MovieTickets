@@ -57,6 +57,9 @@ namespace MovieTickets
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            //Seedig the Database
+            //  ApplicationDbInitializer.Seed(app);
+            ApplicationDbInitializer.Seed(app);
         }
     }
 }

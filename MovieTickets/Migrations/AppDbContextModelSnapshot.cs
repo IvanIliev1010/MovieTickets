@@ -62,8 +62,8 @@ namespace MovieTickets.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Description")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
@@ -88,6 +88,9 @@ namespace MovieTickets.Migrations
 
                     b.Property<string>("Descripiton")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EndtDate")
                         .HasColumnType("datetime2");

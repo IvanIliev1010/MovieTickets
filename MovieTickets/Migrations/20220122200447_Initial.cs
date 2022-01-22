@@ -30,7 +30,7 @@ namespace MovieTickets.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Logo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,7 +66,8 @@ namespace MovieTickets.Migrations
                     EndtDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MovieCategory = table.Column<int>(type: "int", nullable: false),
                     CinemaId = table.Column<int>(type: "int", nullable: false),
-                    ProducerId = table.Column<int>(type: "int", nullable: false)
+                    ProducerId = table.Column<int>(type: "int", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

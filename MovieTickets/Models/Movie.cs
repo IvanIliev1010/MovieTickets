@@ -33,6 +33,6 @@ namespace MovieTickets.Models
         public int ProducerId { get; set; }
         [ForeignKey("ProducerId")]
         public Producer Producer { get; set; }
-
+        public DateTime EndDate { get; internal set; }
     }
 }
