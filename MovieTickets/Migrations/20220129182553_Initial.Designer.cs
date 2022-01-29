@@ -10,7 +10,7 @@ using MovieTickets.Data;
 namespace MovieTickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220122200447_Initial")]
+    [Migration("20220129182553_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,9 +92,6 @@ namespace MovieTickets.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EndtDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageURL")

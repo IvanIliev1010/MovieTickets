@@ -92,9 +92,6 @@ namespace MovieTickets.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EndtDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 

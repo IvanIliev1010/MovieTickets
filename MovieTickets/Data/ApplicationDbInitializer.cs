@@ -135,7 +135,7 @@ namespace MovieTickets.Data
                             Price = 5,
                             ImageURL = "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
                             StartDate = DateTime.Now.AddDays(10),
-                            EndtDate = DateTime.Now.AddDays(20),
+                            EndDate = DateTime.Now.AddDays(20),
                             CinemaId =1,
                             ProducerId =4,
                             MovieCategory =MovieCategory.Science_Ficiton
@@ -148,7 +148,7 @@ namespace MovieTickets.Data
                             Price = 7,
                             ImageURL = "https://m.media-amazon.com/images/I/51K8ouYrHeL.jpg",
                             StartDate = DateTime.Now.AddDays(20),
-                            EndtDate = DateTime.Now.AddDays(30),
+                            EndDate = DateTime.Now.AddDays(30),
                             CinemaId =2,
                             ProducerId =3,
                             MovieCategory =MovieCategory.Action
@@ -161,7 +161,7 @@ namespace MovieTickets.Data
                             Price = 6,
                             ImageURL = "https://m.media-amazon.com/images/M/MV5BMWUzN2VkY2ItYmQ4YS00MjFmLWJhZDQtYWY1NWQ2NTA5NDNlXkEyXkFqcGdeQXVyNDc2NjEyMw@@._V1_FMjpg_UX1000_.jpg",
                             StartDate = DateTime.Now,
-                            EndtDate = DateTime.Now.AddDays(20),
+                            EndDate = DateTime.Now.AddDays(20),
                             CinemaId =3,
                             ProducerId =1,
                             MovieCategory =MovieCategory.Comedy
