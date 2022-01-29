@@ -11,8 +11,11 @@ namespace MovieTickets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name ="Theater logo")]
         public string Logo { get; set; }
+        [Display(Name = "Name")]
         public string Name { get; set; }
+        [Display(Name = "About:")]
         public string Description { get; set; }
 
         //Relationships with the DB

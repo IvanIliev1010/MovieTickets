@@ -10,9 +10,11 @@ namespace MovieTickets.Models
     {
         [Key]
         public int ProducerId { get; set; }
-
+        [Display(Name ="Picture")]
         public string ProfilePictureURL { get; set; }
+        [Display(Name = "Name")]
         public string FullName { get; set; }
+        [Display(Name = "Producer Bio")]
         public string Biograhpy { get; set; }
 
         // relatioships for the Database
