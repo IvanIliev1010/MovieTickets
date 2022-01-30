@@ -1,71 +1,153 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MovieTickets.Data;
-using MovieTickets.Data.Services;
-using MovieTickets.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MovieTickets.Data;
+using MovieTickets.Models;
 
 namespace MovieTickets.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly IActorsService _service;
-        public ActorsController(IActorsService service)
+        private readonly AppDbContext _context;
+
+        public ActorsController(AppDbContext context)
         {
-            _service = service;
+            _context = context;
         }
+
+        // GET: Actors
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllAsync();
-            return View(data);
+            return View(await _context.Actors.ToListAsync());
         }
-        // GetRequest -> Actors/Create
+
+        // GET: Actors/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actor = await _context.Actors
+                .FirstOrDefaultAsync(m => m.ActorId == id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            return View(actor);
+        }
+
+        // GET: Actors/Create
         public IActionResult Create()
         {
             return View();
         }
+
+        // POST: Actors/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName, ProfilePictureURL, Biograhpy")]Actor actor)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ActorId,ProfilePictureURL,FullName,Biograhpy")] Actor actor)
         {
-            if(!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(actor);
+                _context.Add(actor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-           await _service.AddAsync(actor);
+            return View(actor);
+        }
+
+        // GET: Actors/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actor = await _context.Actors.FindAsync(id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+            return View(actor);
+        }
+
+        // POST: Actors/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ActorId,ProfilePictureURL,FullName,Biograhpy")] Actor actor)
+        {
+            if (id != actor.ActorId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(actor);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ActorExists(actor.ActorId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(actor);
+        }
+
+        // GET: Actors/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actor = await _context.Actors
+                .FirstOrDefaultAsync(m => m.ActorId == id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            return View(actor);
+        }
+
+        // POST: Actors/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actor = await _context.Actors.FindAsync(id);
+            _context.Actors.Remove(actor);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        //Getrequest -> Actors/details/id(1,2,3...)
-        public async Task<IActionResult> Details(int id)
+
+        private bool ActorExists(int id)
         {
-            var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails==null)
-            {
-                return View("NotFound");
-            }
-            else
-            {
-                return View(actorDetails);
-            }
-        }
-        //Edit
-        public async Task<IActionResult> Edit(int id)
-        {
-            var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("NotFound");
-            return View(actorDetails);
-            
-        }
-        [HttpPost]
-        public async Task<IActionResult> Edit(int id,[Bind("Id, FullName, ProfilePictureURL, Biograhpy")] Actor actor)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(actor);
-            }
-            await _service.UpdateAsync(id, actor);
-            return RedirectToAction(nameof(Index));
+            return _context.Actors.Any(e => e.ActorId == id);
         }
     }
 }
