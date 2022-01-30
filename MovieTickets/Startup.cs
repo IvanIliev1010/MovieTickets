@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieTickets.Data;
+using MovieTickets.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,10 @@ namespace MovieTickets
         public void ConfigureServices(IServiceCollection services)
         {
             // DbContext config
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnecitonString")));  
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnecitonString")));
+
+            // Services config
+            services.AddScoped<IActorsService, ActorsService>();
 
             services.AddControllersWithViews();
         }
