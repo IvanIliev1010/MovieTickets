@@ -33,7 +33,7 @@ namespace MovieTickets.Data
                          new Cinema()
                         {
                             Name = "Iskra Movie Theater",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fkino.novo5.com%2Fa%2Fkinopolis-iskra-veliko-trnovo&psig=AOvVaw2hEpKGMV6ll677B7JwOoV_&ust=1642940606242000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCe4uusxfUCFQAAAAAdAAAAABAG",
+                            Logo = "https://www.dnesbg.com/wp-content/uploads/bfi_thumb/12-Kinopolis-opqnaa3dwerqe0pm8ljjnt3g0bdpda3psvkiqvqx7i.jpg",
                            Description = "placed in the central part  of the city this Movie theater has the newest Dolby Surround system and modern furniture, adding a fresh look of the historical Building "
 
                         },
