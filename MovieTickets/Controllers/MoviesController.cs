@@ -69,6 +69,14 @@ namespace MovieTickets.Controllers
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Id", movie.CinemaId);
             ViewData["ProducerId"] = new SelectList(_context.Producers, "ProducerId", "ProducerId", movie.ProducerId);
+            ViewData["MovieCategory"] = new SelectList(new List<MovieCategory>
+            {
+              MovieCategory.Action,
+              MovieCategory.Comedy,
+              MovieCategory.Documentary,
+              MovieCategory.Drama,
+              MovieCategory.Science_Ficiton
+            });
             return View(movie);
         }
 
@@ -87,6 +95,15 @@ namespace MovieTickets.Controllers
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Id", movie.CinemaId);
             ViewData["ProducerId"] = new SelectList(_context.Producers, "ProducerId", "ProducerId", movie.ProducerId);
+            ViewData["MovieCategory"] = new SelectList(new List<MovieCategory>
+            {
+
+              MovieCategory.Action,
+              MovieCategory.Comedy,
+              MovieCategory.Documentary,
+              MovieCategory.Drama,
+              MovieCategory.Science_Ficiton
+            }); 
             return View(movie);
         }
 
@@ -124,6 +141,7 @@ namespace MovieTickets.Controllers
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Id", movie.CinemaId);
             ViewData["ProducerId"] = new SelectList(_context.Producers, "ProducerId", "ProducerId", movie.ProducerId);
+            
             return View(movie);
         }
 
