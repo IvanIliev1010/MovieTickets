@@ -8,14 +8,14 @@
     @foreach (var item in Model)
     {
         <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" style="max-width: 540px; ">
                 <div class="row g-0">
                     <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
+                        <div class="card-header text-white" style="background-color: #ff6a00">
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Name
-                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                    
                                 </h5>
                             </p>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         <div class="card-body">
                             <p class="card-text">@item.Descripiton</p>
-                            <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p> 
+                            <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
                             <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
                             <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
                             <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
@@ -51,7 +51,9 @@
                     <div class="col-md-12">
                         <div class="card-footer" style="text-align:center">
                             <p class="card-text card-button">
-                                <a class="btn btn-success text-white "><i class="bi bi-eye-fill"></i> Show Details</a>
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pen">Edit</i></a> |
+                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye">Details</i></a> |
+                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash">Delete</i></a>
                             </p>
                         </div>
                     </div>
@@ -59,4 +61,8 @@
             </div>
         </div>
     }
+
+    <div class="text-white float-right">
+        <a asp-controller="Movies" asp-action="Create" class="btn btn-info" style="background-color: #ff6a00"><i class="bi bi-file-plus"></i>Add new</a>
+    </div>
 </div>
